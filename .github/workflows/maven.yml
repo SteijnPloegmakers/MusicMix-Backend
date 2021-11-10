@@ -32,5 +32,5 @@ jobs:
       
     - name: 5. What is in target folder?
       run:
-        cd taget
+        cd target
         ls -a
