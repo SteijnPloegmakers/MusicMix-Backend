@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -27,7 +28,7 @@ public class SongController {
     }
 
     @PutMapping(value = "api/updatesong/{id}")
-    public String updateSong(@PathVariable long id, @RequestBody Song song){
+    public String updateSong(@PathVariable UUID id, @RequestBody Song song){
         Song updatedSong = songRepo.findById(id).get();
 
         updatedSong.setTitle(song.getTitle());
@@ -39,7 +40,7 @@ public class SongController {
     }
 
     @DeleteMapping(value = "api/deletesong/{id}")
-    public String deleteSong(@PathVariable long id){
+    public String deleteSong(@PathVariable UUID id){
         Song deletedSong = songRepo.findById(id).get();
         songRepo.delete(deletedSong);
         return "Deleted Song with the id "+id;

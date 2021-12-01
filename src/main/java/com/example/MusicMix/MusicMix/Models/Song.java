@@ -1,9 +1,15 @@
 package com.example.MusicMix.MusicMix.Models;
 
+import com.sun.istack.NotNull;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+import org.springframework.context.annotation.Primary;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.UUID;
 
 
 @Entity
@@ -11,28 +17,30 @@ public class Song {
 
     @Id
     @GeneratedValue
-    private long id;
+    private UUID id;
 
     @Column
+    @NotNull
     private String title;
 
     @Column
+    @NotNull
     private String artist;
 
     @Column
+    @NotNull
     private int year;
 
-    //@Column
-    //private File Audio;
+    @Column
+    @NotNull
+    private String audioFilePath;
 
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public void setId(UUID id) { this.id = id;}
 
     public String getTitle() {
         return title;
@@ -58,11 +66,7 @@ public class Song {
         this.year = year;
     }
 
-    /*public File getAudio() {
-        return audio;
-    }
+    public String getAudio() { return audioFilePath; }
 
-    public void setAudio(File audio) {
-        audio = audio;
-    }*/
+    public void setAudio(String audioFilePath) { this.audioFilePath = audioFilePath;}
 }
