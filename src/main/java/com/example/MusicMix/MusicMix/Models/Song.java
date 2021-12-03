@@ -1,16 +1,11 @@
 package com.example.MusicMix.MusicMix.Models;
 
 import com.sun.istack.NotNull;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-import org.springframework.context.annotation.Primary;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
-
 
 @Entity
 public class Song {
@@ -69,4 +64,7 @@ public class Song {
     public String getAudio() { return audioFilePath; }
 
     public void setAudio(String audioFilePath) { this.audioFilePath = audioFilePath;}
+
+
+
 }

@@ -4,7 +4,6 @@ import com.example.MusicMix.MusicMix.Models.Song;
 import com.example.MusicMix.MusicMix.Repo.SongRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -21,13 +20,14 @@ public class SongController {
     @GetMapping(value = "api/songs")
     public List<Song> getSongs() {return songRepo.findAll();}
 
-    @PostMapping(value = "api/postsong")
+    @PostMapping(value = "api/song/save")
     public String saveSong(@RequestBody Song song){
-        songRepo.save(song);
+
+        Song savedSong = songRepo.save(song);
         return "Saved Song...";
     }
 
-    @PutMapping(value = "api/updatesong/{id}")
+    @PutMapping(value = "api/song/update/{id}")
     public String updateSong(@PathVariable UUID id, @RequestBody Song song){
         Song updatedSong = songRepo.findById(id).get();
 
@@ -39,7 +39,7 @@ public class SongController {
         return "Updated Song...";
     }
 
-    @DeleteMapping(value = "api/deletesong/{id}")
+    @DeleteMapping(value = "api/song/delete/{id}")
     public String deleteSong(@PathVariable UUID id){
         Song deletedSong = songRepo.findById(id).get();
         songRepo.delete(deletedSong);
