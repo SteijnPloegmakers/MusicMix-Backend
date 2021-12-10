@@ -4,12 +4,22 @@ import com.example.MusicMix.MusicMix.Models.Song;
 import com.example.MusicMix.MusicMix.Repo.SongRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class SongController {
+
+
+    private static String UPLOAD_FOLDER = "/Apps/MusicMix/wwwroot/UploadedSongs/";
 
     @Autowired
     private SongRepo songRepo;
@@ -21,10 +31,23 @@ public class SongController {
     public List<Song> getSongs() {return songRepo.findAll();}
 
     @PostMapping(value = "api/song/save")
-    public String saveSong(@RequestBody Song song){
+    public String saveSong(Song song, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes){
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+            return "redirect:uploadStatus";
+        }
+
+        try{
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
+            Files.write(path, bytes);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
         Song savedSong = songRepo.save(song);
-        return "Saved Song...";
+        //savedSong.setAudio(song.getAudio()) = path;
+        return "Saved song...";
     }
 
     @PutMapping(value = "api/song/update/{id}")
