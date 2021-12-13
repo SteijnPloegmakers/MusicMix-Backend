@@ -18,7 +18,6 @@ import java.util.UUID;
 @RestController
 public class SongController {
 
-
     private static String UPLOAD_FOLDER = "/Apps/MusicMix/wwwroot/UploadedSongs/";
 
     @Autowired
