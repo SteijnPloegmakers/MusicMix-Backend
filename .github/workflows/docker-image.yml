@@ -20,8 +20,15 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
+        
       - name: Test with Maven
         run: mvn test
+        
+      - name: Performance Test
+        uses: k6io/action@v0.1
+        with:
+          filename: test.js
+        
 
   publish:
       needs: test
