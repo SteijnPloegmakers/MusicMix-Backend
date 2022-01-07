@@ -23,6 +23,6 @@ public class AuthenticationController {
     public String saveGoogleAccount(@PathVariable String token, @RequestBody GoogleAccount googleAccount){
 
         GoogleAccount savedGoogleAccount = googleAccountRepo.save(googleAccount);
-        return "Saved GoogleAccount...";
+        return "Saved GoogleAccount....";
     }
 }
