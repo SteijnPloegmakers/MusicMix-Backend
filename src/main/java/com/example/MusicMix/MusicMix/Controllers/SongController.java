@@ -2,6 +2,7 @@ package com.example.MusicMix.MusicMix.Controllers;
 
 import com.example.MusicMix.MusicMix.Models.Song;
 import com.example.MusicMix.MusicMix.Repo.SongRepo;
+import com.example.MusicMix.MusicMix.Service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,29 +24,30 @@ public class SongController {
     @Autowired
     private SongRepo songRepo;
 
+    @Autowired
+    private SongService songService;
+
     @GetMapping(value = "/api")
-    public String getPage() {return "Welcome on MusicMix";}
+    public String getPage() {return "Welcome to MusicMix";}
 
     @GetMapping(value = "api/songs")
-    public List<Song> getSongs() {return songRepo.findAll();}
+    public List<Song> getSongs() {return songService.getAllSongs();}
 
     @PostMapping(value = "api/song/save")
-    public String saveSong(Song song, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes){
-        if (file.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:uploadStatus";
-        }
+    public String saveSong(Song song, @RequestParam("file") MultipartFile file){
+
+        String audioFilePath = "";
 
         try{
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
+            audioFilePath = path.toString();
         }catch (IOException e){
             e.printStackTrace();
         }
 
         Song savedSong = songRepo.save(song);
-        //savedSong.setAudio(song.getAudio()) = path;
         return "Saved song...";
     }
 
