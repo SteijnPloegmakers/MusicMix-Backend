@@ -1,11 +1,14 @@
 package com.example.MusicMix.MusicMix;
 
 import com.example.MusicMix.MusicMix.Controllers.SongController;
+import com.example.MusicMix.MusicMix.Models.Song;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootTest
 class SongTests {
@@ -27,5 +30,18 @@ class SongTests {
 
         Assertions.assertNotEquals("Welcome to America", response);
     }
+
+    /*@Test
+    void TestIfListGetsFetched(){
+        SongController controller = new SongController();
+
+        List<Song> response = controller.getSongs();
+        List<Song> songs = new ArrayList<>();
+        songs.add(new Song());
+
+        Assertions.assertEquals(songs, response);
+
+
+    }*/
 
 }
