@@ -5,5 +5,5 @@ RUN mvn -f /home/app/pom.xml clean package
 
 FROM openjdk:11-jre-slim
 COPY --from=build /home/app/target/MusicMix-0.0.1.jar /usr/local/lib/MusicMix.jar
-EXPOSE 8080
+EXPOSE 80
 ENTRYPOINT ["java","-jar","/usr/local/lib/MusicMix.jar"]
