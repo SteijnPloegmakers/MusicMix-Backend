@@ -35,7 +35,6 @@ public class SongController {
     public List<Song> getSongs() {return songService.getAllSongs();}
 
     @PostMapping(value = "api/song/save")
-    @Async
     public String saveSong(Song song, @RequestParam("file") MultipartFile file){
 
         String audioFilePath = "";
