@@ -8,8 +8,7 @@ import java.util.UUID;
 public class GoogleAccount {
 
     @Id
-    @GeneratedValue
-    private UUID id;
+    private String id;
 
     @Column
     @NotNull
@@ -19,11 +18,11 @@ public class GoogleAccount {
     @NotNull
     private String email;
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

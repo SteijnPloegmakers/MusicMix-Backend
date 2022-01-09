@@ -20,9 +20,9 @@ public class AuthenticationController {
     public List<GoogleAccount> getGoogleAccounts() {return googleAccountRepo.findAll();}
 
     @PostMapping(value = "api/login/oauth2/google/{token}")
-    public String saveGoogleAccount(@PathVariable String token, @RequestBody GoogleAccount googleAccount){
+    public String saveGoogleAccount(@PathVariable("token") GoogleAccount token){
 
-        GoogleAccount savedGoogleAccount = googleAccountRepo.save(googleAccount);
+        GoogleAccount savedGoogleAccount = googleAccountRepo.save(token);
         return "Saved GoogleAccount...";
     }
 }

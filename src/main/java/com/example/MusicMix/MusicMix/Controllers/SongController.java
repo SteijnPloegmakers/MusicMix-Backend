@@ -4,10 +4,8 @@ import com.example.MusicMix.MusicMix.Models.Song;
 import com.example.MusicMix.MusicMix.Repo.SongRepo;
 import com.example.MusicMix.MusicMix.Service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.nio.file.Files;
