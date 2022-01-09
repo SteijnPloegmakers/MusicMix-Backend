@@ -23,11 +23,6 @@ jobs:
         
       - name: Test with Maven
         run: mvn test
-        
-      - name: Spike test
-        uses: k6io/action@v0.1
-        with:
-          filename: spiketest.js
           
       - name: Load test
         uses: k6io/action@v0.1
@@ -37,7 +32,12 @@ jobs:
       - name: Stress Test
         uses: k6io/action@v0.1
         with:
-          filename: stresstest.js         
+          filename: stresstest.js    
+          
+      - name: Spike test
+        uses: k6io/action@v0.1
+        with:
+          filename: spiketest.js
 
   codescan:
       runs-on: windows-latest
