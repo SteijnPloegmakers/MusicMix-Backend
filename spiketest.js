@@ -16,7 +16,7 @@ export let options ={
     }
 }
 
-const base_url = 'http://localhost:8080'
+const base_url = 'https://localhost:8080'
 export default () => {
     const responses = http.batch([
         ['GET', `${base_url}/api/songs`]
