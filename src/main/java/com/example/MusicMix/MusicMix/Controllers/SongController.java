@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class SongController {
 
