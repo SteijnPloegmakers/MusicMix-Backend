@@ -3,6 +3,7 @@ package com.example.MusicMix.MusicMix.Controllers;
 import com.example.MusicMix.MusicMix.Models.Playlist;
 import com.example.MusicMix.MusicMix.Repo.PlaylistRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +20,14 @@ public class PlaylistController {
     public List<Playlist> getPlaylists() {return playlistRepo.findAll();}
 
     @PostMapping(value = "api/playlist/save")
+    @Async
     public String savePlaylist(@RequestBody Playlist playlist){
 
-        Playlist savedPlaylist = playlistRepo.save(playlist);
+        try {
+            Playlist savedPlaylist = playlistRepo.save(playlist);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "Saved Playlist...";
     }
 

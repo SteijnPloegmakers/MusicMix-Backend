@@ -4,6 +4,7 @@ import com.example.MusicMix.MusicMix.Models.Song;
 import com.example.MusicMix.MusicMix.Repo.SongRepo;
 import com.example.MusicMix.MusicMix.Service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,6 +34,7 @@ public class SongController {
     public List<Song> getSongs() {return songService.getAllSongs();}
 
     @PostMapping(value = "api/song/save")
+    @Async
     public String saveSong(Song song, @RequestParam("file") MultipartFile file){
 
         String audioFilePath = "";
@@ -42,11 +44,11 @@ public class SongController {
             Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
             audioFilePath = path.toString();
+            Song savedSong = songRepo.save(song);
         }catch (IOException e){
             e.printStackTrace();
         }
 
-        Song savedSong = songRepo.save(song);
         return "Saved song...";
     }
 
