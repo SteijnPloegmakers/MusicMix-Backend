@@ -28,7 +28,7 @@ public class SongController {
     private SongService songService;
 
     @GetMapping(value = "/api")
-    public String getPage() {return "Welcome to MusicMix";}
+    public String getPage() {return songService.getWelcomeMessage();}
 
     @GetMapping(value = "api/songs")
     public List<Song> getSongs() {return songService.getAllSongs();}

@@ -1,6 +1,7 @@
 package com.example.MusicMix.MusicMix;
 
 import com.example.MusicMix.MusicMix.Controllers.SongController;
+import com.example.MusicMix.MusicMix.Service.SongService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,13 +22,13 @@ public class IntegrationTests {
     private MockMvc mockMvc;
 
     @MockBean
-    private SongController songController;
+    private SongService songService;
 
     @Test
     void ShouldGetAllSongs() throws Exception {
 
-        when(songController
-                .getPage())
+        when(songService
+                .getWelcomeMessage())
                 .thenReturn("Welcome on MusicMix");
         mockMvc.perform(get("/api"))
                 .andDo(print())
