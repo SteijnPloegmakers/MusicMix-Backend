@@ -17,7 +17,7 @@ export let options ={
         {duration : '10s', target : 400},
         {duration : '5s', target : 0}
     ],
-    thresholds:{
+    tresholds:{
         http_req_failed:['rate<0.01']
     }
 }
