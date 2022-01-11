@@ -16,7 +16,7 @@ class UnitTests {
 
         String response = controller.getPage();
 
-        Assertions.assertEquals("Welcome to MusicMix", response);
+        Assertions.assertEquals("Welcome on MusicMix", response);
     }
 
     @Test

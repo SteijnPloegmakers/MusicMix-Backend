@@ -21,14 +21,14 @@ public class SongController {
 
     private static String UPLOAD_FOLDER = "/Apps/MusicMix/wwwroot/UploadedSongs/";
 
+    @GetMapping(value = "/api")
+    public String getPage() {return "Welcome on MusicMix";}
+
     @Autowired
     private SongRepo songRepo;
 
     @Autowired
     private SongService songService;
-
-    @GetMapping(value = "/api")
-    public String getPage() {return songService.getWelcomeMessage();}
 
     @GetMapping(value = "api/songs")
     public List<Song> getSongs() {return songService.getAllSongs();}

@@ -14,10 +14,6 @@ public class SongService {
     @Autowired
     private SongRepo songRepo;
 
-    public String getWelcomeMessage(){
-        return "Welcome on MusicMix";
-    }
-
     public List<Song> getAllSongs(){
         return songRepo.findAll();
     }
