@@ -8,30 +8,28 @@ import java.util.UUID;
 public class GoogleAccount {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private UUID id;
 
     @Column
     @NotNull
-    private String username;
+    private String googleId;
+
+    @Column
+    @NotNull
+    private String name;
 
     @Column
     @NotNull
     private String email;
 
-    public String getId() {
-        return id;
+
+    public String getName() {
+        return name;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -41,4 +39,21 @@ public class GoogleAccount {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getGoogleId() {
+        return googleId;
+    }
+
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
+    }
 }
+
