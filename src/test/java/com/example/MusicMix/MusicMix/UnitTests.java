@@ -2,13 +2,20 @@ package com.example.MusicMix.MusicMix;
 
 import com.example.MusicMix.MusicMix.Controllers.SongController;
 import com.example.MusicMix.MusicMix.Models.Song;
+import com.example.MusicMix.MusicMix.Repo.SongRepo;
+import com.example.MusicMix.MusicMix.Service.SongService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 @SpringBootTest
-class SongTests {
+@ContextConfiguration(classes = SongRepo.class)
+class UnitTests {
 
     @Test
     void TestIfStringGetsLogged() {
@@ -16,7 +23,7 @@ class SongTests {
 
         String response = controller.getPage();
 
-        Assertions.assertEquals("Welcome to MusicMix", response);
+        Assertions.assertEquals("Welcome on MusicMix", response);
     }
 
     @Test
@@ -30,15 +37,13 @@ class SongTests {
 
     /*@Test
     void TestIfListGetsFetched(){
-        SongController controller = new SongController();
+        SongService songService = new SongService();
+        SongController songController = new SongController();
 
-        List<Song> response = controller.getSongs();
-        List<Song> songs = new ArrayList<>();
-        songs.add(new Song());
+        List<Song> songList = songService.getAllSongs();
+        List<Song> response = songController.getSongs();
 
-        Assertions.assertEquals(songs, response);
-
+        Assertions.assertEquals(songList, response);
 
     }*/
-
 }

@@ -2,6 +2,7 @@ package com.example.MusicMix.MusicMix.Controllers;
 
 import com.example.MusicMix.MusicMix.Models.Playlist;
 import com.example.MusicMix.MusicMix.Repo.PlaylistRepo;
+import com.example.MusicMix.MusicMix.Service.PlaylistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,11 @@ public class PlaylistController {
     @Autowired
     private PlaylistRepo playlistRepo;
 
+    @Autowired
+    private PlaylistService playlistService;
+
     @GetMapping(value = "api/playlists")
-    public List<Playlist> getPlaylists() {return playlistRepo.findAll();}
+    public List<Playlist> getPlaylists() {return playlistService.getAllPlaylists();}
 
     @PostMapping(value = "api/playlist/save")
     @Async
