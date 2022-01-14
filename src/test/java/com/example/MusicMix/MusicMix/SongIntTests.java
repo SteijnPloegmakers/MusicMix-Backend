@@ -1,6 +1,8 @@
 package com.example.MusicMix.MusicMix;
 
+import com.example.MusicMix.MusicMix.Models.Song;
 import com.example.MusicMix.MusicMix.Repo.SongRepo;
+import com.example.MusicMix.MusicMix.Service.SongService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -10,7 +12,11 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 @WebMvcTest()
@@ -21,10 +27,11 @@ public class SongIntTests {
     private MockMvc mockMvc;
 
     @Test
-    void ShouldGetWelcomeMessage() throws Exception {
+    void ShouldNotGetWelcomeMessage() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders.get("/api");
         MvcResult result = mockMvc.perform(request).andReturn();
-        assertEquals("Welcome on MusicMix", result.getResponse().getContentAsString());
+        assertNotEquals("Welcome on America", result.getResponse().getContentAsString());
     }
+
 }
 
