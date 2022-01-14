@@ -33,5 +33,11 @@ public class SongIntTests {
         assertNotEquals("Welcome on America", result.getResponse().getContentAsString());
     }
 
+    @Test
+    void ShouldNotGetWelcomeMessageAsWell() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders.get("/api");
+        MvcResult result = mockMvc.perform(request).andReturn();
+        assertNotEquals("Welcome", result.getResponse().getContentAsString());
+    }
 }
 

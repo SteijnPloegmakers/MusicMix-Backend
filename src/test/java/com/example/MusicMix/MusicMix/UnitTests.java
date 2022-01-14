@@ -6,9 +6,11 @@ import com.example.MusicMix.MusicMix.Repo.SongRepo;
 import com.example.MusicMix.MusicMix.Service.SongService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
+import javax.persistence.Access;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
 @SpringBootTest
 @ContextConfiguration(classes = SongRepo.class)
 class UnitTests {
+
 
     @Test
     void TestIfStringGetsLogged() {
@@ -38,6 +41,7 @@ class UnitTests {
     /*@Test
     void TestIfListGetsFetched(){
         SongService songService = new SongService();
+
         SongController songController = new SongController();
 
         List<Song> songList = songService.getAllSongs();
